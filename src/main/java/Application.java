@@ -19,17 +19,9 @@ public class Application {
 
         String[] channels = props.getProperty("bot.channelsToMonitor").split(",");
 
-
         TwitchApiClient twitchClient = new TwitchApiClient(twitchClientId, twitchSecret, oAuthToken, channels);
         DiscordClient discordClientInstance = new DiscordClient(discordApiToken, alertChannel);
         twitchClient.registerForStreamEvent(channels, discordClientInstance);
-
-
-
-
-
-
-
 
     }
 }

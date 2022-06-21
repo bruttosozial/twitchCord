@@ -88,7 +88,6 @@ public class TwitchApiClient {
             }
 
             discordClient.streamerWentLifeMessage(event.getStream(), currentStreamUser);
-
         });
     }
 }

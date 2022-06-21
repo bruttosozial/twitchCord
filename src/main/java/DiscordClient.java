@@ -16,11 +16,11 @@ public class DiscordClient {
     /**
      * The client to send messages with
      * */
-    private GatewayDiscordClient client;
+    final private GatewayDiscordClient client;
     /**
      * The alert channel to send messages into.
      * */
-    private Snowflake alertChannel;
+    final private Snowflake alertChannel;
     public DiscordClient(String apiToken, String alertChannelId) {
         this.client = DiscordClientBuilder.create(apiToken)
                 .build()
@@ -46,7 +46,6 @@ public class DiscordClient {
      * @param user the user of the stream
      * */
     public void streamerWentLifeMessage(Stream stream, User user) {
-
         StringBuilder title = new StringBuilder();
         title.append(stream.getUserLogin());
         title.append(" went live");
@@ -69,25 +68,4 @@ public class DiscordClient {
         Mono<MessageChannel>  messageChannel = client.getChannelById(this.alertChannel).ofType(MessageChannel.class);
         messageChannel.flatMap(channel -> channel.createMessage(embedSpec)).subscribe();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
